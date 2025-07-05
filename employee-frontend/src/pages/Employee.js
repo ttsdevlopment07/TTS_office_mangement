@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from '../api'; // axios baseURL is already set in src/api.js
 import { useEmployeeContext } from '../context/EmployeeContext';
 import '../styles/Employee.css';
 
@@ -10,14 +11,28 @@ function Employee() {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
 
-  // Dummy login validation (replace with real API call)
-  const handlePunch = () => {
-    if (employeeName && employeeId && password) {
-      // Simulate login success
+  const handlePunch = async () => {
+    if (!employeeName || !employeeId || !password) {
+      setLoginError('Please enter all fields.');
+      return;
+    }
+
+    try {
+      const res = await axios.post('/login', {
+        name: employeeName,
+        id: employeeId,
+        password
+      });
+
+      console.log('Login Success:', res.data);
       setShowPunch(true);
       setLoginError('');
-    } else {
-      setLoginError('Please enter all fields.');
+    } catch (error) {
+      if (error.response?.status === 401) {
+        setLoginError(error.response.data.error || 'Invalid credentials');
+      } else {
+        setLoginError('Login failed. Please try again.');
+      }
     }
   };
 
@@ -46,6 +61,7 @@ function Employee() {
           <span className="tab-count">120</span>
         </button>
       </div>
+
       {!showPunch ? (
         <div id="employeeContent">
           <div className="form-section">
@@ -55,7 +71,7 @@ function Employee() {
                 type="text"
                 value={employeeName}
                 onChange={e => setEmployeeName(e.target.value)}
-                placeholder="Enter your name"
+                placeholder="Enter full name"
               />
               <label>Employee ID:</label>
               <input
