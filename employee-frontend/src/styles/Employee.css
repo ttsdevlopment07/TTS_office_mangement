@@ -1,0 +1,87 @@
+/* Employee.css */
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 16px;
+  color: #1976d2;
+}
+
+.form-row input {
+  padding: 6px 10px;
+  border: 2px solid #b3e5fc;
+  border-radius: 5px;
+  width: 230px;
+}
+
+.form-row input.date-input {
+  width: 180px;
+}
+
+.arrow-btn {
+  padding: 6px 12px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 180px);
+  gap: 25px;
+  justify-content: center;
+}
+
+.button-grid button {
+  padding: 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-punch { background-color: #d1c4e9; }
+.btn-report { background-color: #b2ebf2; }
+.btn-task { background-color: #e6ee9c; }
+.btn-mail { background-color: #9fa8da; }
+
+.punch-options {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.punch-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.punch-options-grid button {
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-back { background-color: #ffcdd2; }
+.btn-leave { background-color: #b2ebf2; }
+.btn-dayin { background-color: #c8e6c9; }
+.btn-dayout { background-color: #bbdefb; }
